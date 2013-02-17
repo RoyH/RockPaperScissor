@@ -203,14 +203,52 @@ public class RockPaperScissors {
         RockPaperScissorsUI.textCPUMOVE.setText(CPU_move);
         System.out.println("Therefore I play : " + CPU_move);
         System.out.println("Probability of success is " + CPU_prob + "%");
-
+        WinCount(CPU_move, move);
 
 
         return CPU_move;
 
     }
+
+    public static void WinCount(String CPU_move, String move) {
+        if ((CPU_move.equals("rock"))
+                && (move.equals("paper"))) {
+            global.PlayerWin++;
+        } 
+        
+         if ((CPU_move.equals("paper"))
+                && (move.equals("scissors"))) {
+            global.PlayerWin++;
+        } 
+        
+          if ((CPU_move.equals("scissors"))
+                && (move.equals("rock"))) {
+            global.PlayerWin++;
+        } 
+        
+        if ((CPU_move.equals("rock"))
+                && (move.equals("scissors"))) {
+            global.CPUwin++;
+        } 
+        
+         if ((CPU_move.equals("paper"))
+                && (move.equals("rock"))) {
+            global.CPUwin++;
+        } 
+        
+         if ((CPU_move.equals("scissors"))
+                && (move.equals("paper"))) {
+            global.CPUwin++;
+        } 
+        
+        
+        
+        
+        
    
+        RockPaperScissorsUI.CPUwins.setText(Integer.toString(global.CPUwin));
+        RockPaperScissorsUI.PlayerWins.setText(Integer.toString(global.PlayerWin));
 
 
-
+    }
 }
