@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class global {
     
    public static ArrayList list = new ArrayList();
+   public static String move = null ;
+   public static String CPUmove = null;
    
    
     

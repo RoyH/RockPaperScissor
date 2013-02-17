@@ -16,56 +16,37 @@ public class RockPaperScissors {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void mainProg(String move) {
         // how to add to global array
         // global.list.add("rock");
 
-        boolean x = false;
-        int moveCount = 0;
+       
+        
         // Reads in input and assigns move. 
-        do {
+                 // Input move
 
-            // Shows current state of play
-            System.out.println("Current move : " + moveCount);
-           // Input move
-
-            String move = input();
+          
             move = move.toLowerCase();
-
+           global.list.add(move);
            // playes move.
              System.out.println(calculate(move));
-            
+             System.out.println(move);
             // Checks for exit clause
            
             
-            if ("exit".equals(move)) {
-                x = true;
-            }
-
-            if ("print".equals(move)) {
-                System.out.println(global.list);
-            }
-
-            if ("calc".equals(move)) {
-                calculate(move);
-            }
             
               
             
             
             
             // Error Checks and adding move to arraylist.
-             checkInput(move);
+            // checkInput(move);
 
-            // logs into array
-            // Increments move counter
-            // Note to self: move Counter should only increment if a valid move is played.
-            moveCount++;
-
-        } while (x == false);
+          
+       
     }
 
-    public static String input() {
+  /*  public static String input() {
 
         System.out.print("Enter your move: ");
 
@@ -84,6 +65,7 @@ public class RockPaperScissors {
 
     }
 
+*/
     public static void checkInput(String move) {
         
        if ((!"print".equals(move)) || 
@@ -101,25 +83,7 @@ public class RockPaperScissors {
         
         
         
-        // UGLY implementation
-        /*
-        if (!"print".equals(move))  {
-            if (!"rock".equals(move)) {
-                if (!"paper".equals(move)) {
-                    if (!"scissors".equals(move)) {
-                        // System.out.println("Error, not a valid Input.. Use rock, Paper, or scissors");
-                    } else {
-                        global.list.add(move);
-                    }
-                } else {
-                    global.list.add(move);
-                }
-            } else {
-                global.list.add(move);
-            }
-        }
-        
-        */
+       
     
     
     
@@ -158,7 +122,7 @@ public class RockPaperScissors {
         // searches through array, and gets the next move
         // puts the move into an array called list_sorted
         for ( int i = start; i < (list_c.length - 1); i++) {
-            if ((list_c[list_c.length - 1]).equals(list_c[i])) {
+            if ((list_c[list_c.length -2]).equals(list_c[i])) {
                 list_sorted.add(list_c[i + 1]);
             }
 
@@ -214,16 +178,18 @@ public class RockPaperScissors {
             
             
         // Code below is for debugging purposes    
-        //System.out.println(list_sorted);
+        System.out.println(list_sorted);
         //System.out.println("Probability of paper : " +  per_paper);
         //System.out.println("Probability of rock : " + per_rock);
         //System.out.println("Probability of scissors : " + per_scissors);       
         System.out.println("CPU  predicts : "  + prob_max);
+        RockPaperScissorsUI.textCPUMOVE.setText(CPU_move);
         System.out.println("Therefore I play : " +  CPU_move);
         System.out.println("Probability of success is " + CPU_prob + "%");
         
-        return CPU_move;
+           
         
+        return CPU_move;
 
     }
 }
