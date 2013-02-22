@@ -28,12 +28,10 @@ public class RockPaperScissors {
 
 
         move = move.toLowerCase();
-        global.list.add(move);
-        // playes move.
-        System.out.println(calculate(move));
-        System.out.println(move);
-        // Checks for exit clause
 
+        global.list.add(move);
+
+        calculate(move);
 
 
 
@@ -180,7 +178,9 @@ public class RockPaperScissors {
         Random generator = new Random();
         if (CPU_move == null) {
             double random = generator.nextDouble();
-            System.out.println(random);
+            //Debug
+            //System.out.println(random);
+            System.out.println("Prediction Algorithm produced null result, switching to failsafe. RNG ");
             if ((random > 0) || (random <= 0.33)) {
                 CPU_move = "rock";
             }
@@ -191,11 +191,11 @@ public class RockPaperScissors {
             if ((random > 0.66)) {
                 CPU_move = "scissors";
             }
-
+            
         }
 
         // Code below is for debugging purposes    
-        System.out.println(list_sorted);
+        //System.out.println(list_sorted);
         //System.out.println("Probability of paper : " +  per_paper);
         //System.out.println("Probability of rock : " + per_rock);
         //System.out.println("Probability of scissors : " + per_scissors);       
@@ -203,6 +203,7 @@ public class RockPaperScissors {
         RockPaperScissorsUI.textCPUMOVE.setText(CPU_move);
         System.out.println("Therefore I play : " + CPU_move);
         System.out.println("Probability of success is " + CPU_prob + "%");
+        
         WinCount(CPU_move, move);
 
 
@@ -214,40 +215,43 @@ public class RockPaperScissors {
         if ((CPU_move.equals("rock"))
                 && (move.equals("paper"))) {
             global.PlayerWin++;
-        } 
-        
-         if ((CPU_move.equals("paper"))
+        }
+
+        if ((CPU_move.equals("paper"))
                 && (move.equals("scissors"))) {
             global.PlayerWin++;
-        } 
-        
-          if ((CPU_move.equals("scissors"))
+        }
+
+        if ((CPU_move.equals("scissors"))
                 && (move.equals("rock"))) {
             global.PlayerWin++;
-        } 
-        
+        }
+
         if ((CPU_move.equals("rock"))
                 && (move.equals("scissors"))) {
             global.CPUwin++;
-        } 
-        
-         if ((CPU_move.equals("paper"))
+        }
+
+        if ((CPU_move.equals("paper"))
                 && (move.equals("rock"))) {
             global.CPUwin++;
-        } 
-        
-         if ((CPU_move.equals("scissors"))
+        }
+
+        if ((CPU_move.equals("scissors"))
                 && (move.equals("paper"))) {
             global.CPUwin++;
-        } 
-        
-        
-        
-        
-        
-   
+        }
+
+
+
+
+
+
         RockPaperScissorsUI.CPUwins.setText(Integer.toString(global.CPUwin));
         RockPaperScissorsUI.PlayerWins.setText(Integer.toString(global.PlayerWin));
+
+        double progress = (((double) global.CPUwin / ((double) global.CPUwin + (double) global.PlayerWin)) * 100);
+        RockPaperScissorsUI.progress.setValue((int) progress);
 
 
     }
