@@ -4,9 +4,12 @@
  */
 package rockpaperscissors;
 
+import java.awt.Component;
 import java.util.*;
 import java.io.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -126,6 +129,8 @@ public class RockPaperScissors {
             }
 
         }
+        
+        
         // Convert list of data into array
 
         String[] array_sorted = new String[list_sorted.size()];
@@ -244,7 +249,12 @@ public class RockPaperScissors {
 
 
 
-
+        if (global.CPUwin == 25) {
+            Component frame = null;
+            JOptionPane.showMessageDialog(frame,
+    "Youve been beaten by an Asian designed Asian artificial Intelligence. ");
+                    
+        }
 
 
         RockPaperScissorsUI.CPUwins.setText(Integer.toString(global.CPUwin));
